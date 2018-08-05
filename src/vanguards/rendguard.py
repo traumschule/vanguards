@@ -8,14 +8,14 @@ from .logger import plog
 REND_USE_GLOBAL_START_COUNT = 1000
 
 # Number of hops to scale counts down by two at
-REND_USE_SCALE_AT_COUNT = 10000
+REND_USE_SCALE_AT_COUNT = 20000
 
 # Minimum number of times a relay has to be used before we check it for
 # overuse
 REND_USE_RELAY_START_COUNT = 100
 
 # How many times more than its bandwidth must a relay be used?
-REND_USE_MAX_USE_TO_BW_RATIO = 5.0
+REND_USE_MAX_USE_TO_BW_RATIO = 10.0
 
 # Should we close circuits on rend point overuse?
 REND_USE_CLOSE_CIRCUITS_ON_OVERUSE = True
@@ -29,8 +29,8 @@ class RendUseCount:
 class RendGuard:
   def __init__(self):
     self.use_counts = {}
-    self.total_use_counts = 0
-    self.pickle_revision = 1
+    self.total_use_counts = 0.0
+    self.pickle_revision = 1.0
 
   def valid_rend_use(self, r):
     if r not in self.use_counts:
